@@ -1,0 +1,47 @@
+<html>
+<head>
+<title></title>
+
+<link href = "css/main.css" rel="stylesheet" type="text/css">
+<link href = "css/bootstrap.css" rel="stylesheet" type="text/css">
+<script src="scripts/jquery.js"></script>
+<script src="scripts/bootstrap.js"></script>
+<script src="scripts/handlebars.js"></script>
+<script src="scripts/tabletop.js"></script>
+<script src="scripts/d3.min.js"></script>
+<script type="text/javascript" src="http://mbostock.github.com/d3/d3.min.js"></script>
+<script src="main.js"></script>
+
+
+<style type="text/css">
+#tabletop {
+  display: inline-block;
+  width: 350px;
+  vertical-align:top;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="item">
+</div>
+</div>
+
+<script type="text/javascript">
+</script>
+  
+  <!-- HANDLEBARS TEMPLATE -->
+
+  <script id="walkTemplate" type="text/x-handlebars-template">
+        <h5> Date: {{timestamp}} </h5>
+        <blockquote>
+        <p>{{breaklines write}}</p>
+        </blockquote>
+  </script>
+
+</body>
+</html>
