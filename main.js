@@ -10,35 +10,41 @@ Handlebars.registerHelper('breaklines', function(text) {
 $(document).ready(
     function() {
 
-      Tabletop.init( { key: public_spreadsheet_url3,
-                         callback: showInfo3,
+      Tabletop.init( { key: public_spreadsheet_url,
+                         callback: d3Scope,
                          simpleSheet: true } );
-      }
 
+      Tabletop.init( { key: public_spreadsheet_url,
+                         callback: tabletopScope,
+                         simpleSheet: true,
+                         orderby: 'timestamp',
+                         reverse: true } );
+
+
+    }
+ 
   );
 
-
-
-var public_spreadsheet_url3 = 'https://docs.google.com/spreadsheets/d/1OSMq80knQ4zQu2OZBGnWHQJmfWzBlGuGV2m-mA-xX28/pubhtml';
+var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1OSMq80knQ4zQu2OZBGnWHQJmfWzBlGuGV2m-mA-xX28/pubhtml';
 var myData = [];
 
 
-
-function showInfo3(data, tabletop) {
-	alert("successfully processed walk sheet")
-    
-    var source = $("#walkTemplate").html();
+function tabletopScope(data, tabletop) {
+	alert("more successes amongst mustaches");
+  console.log(data);
+  //set myData equal to 'data' so that I can access it outside of thsi function
+  myData = data;
+  var source = $("#walkTemplate").html();
 	var template = Handlebars.compile(source);
 
 	$.each( tabletop.sheets("Sheet1").all(), function(i, cat) {
       var html = template(cat);
       $("#item").append(html);
     });
-
-    console.log(data[0].write)
-
-
   } // end of function 3
+
+  //d3
+  
 
 
 

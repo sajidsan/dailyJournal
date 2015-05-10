@@ -35,3 +35,10 @@ td a {
     font: 25px arial,sans-serif;
     color: green;
 }
+
+#tabletop {
+  display: inline-block;
+  width: 350px;
+  vertical-align:top;
+}
+
