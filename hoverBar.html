@@ -1,0 +1,64 @@
+<html>
+	<head>	
+		<title></title>
+
+
+		<script src="scripts/jquery.js"></script>
+		<script src="scripts/bootstrap.js"></script>
+		<script src="scripts/handlebars.js"></script>
+		<script src="scripts/tabletop.js"></script>
+		<script src="scripts/d3.min.js"></script>
+		<script src="main.js"></script>
+
+		<style type="text/css">
+			rect:hover {
+				fill: orange;
+			}
+
+			#tooltip {
+				position: absolute;
+				width: 200px;
+				height: auto;
+				padding: 10px;
+				background-color: white;
+				border-radius: 10px;
+				pointer-events: none;
+			}
+
+			#tooltip.hidden {
+				display: none;
+			}
+
+			#tooltip p {
+				margin: 0;
+				font-family: sans-serif;
+				font-size: 16px;
+				line-height: 20px;
+			}
+
+
+		</style>
+	</head>
+
+	<body>
+		<div id="tooltip" class="hidden">
+			<p><strong>HEADING</strong></p>
+			<p><span id="value">100</span></p>
+		</div>
+		<script type="text/javascript">
+			var w = 600;
+			var h = 250;
+
+			var dataset = [ 5, 10, 15];
+
+			var xScale = d3.scale.ordinal()
+							.domain(d3.range(dataset.length))
+							.rangeRoundBands([0, w], 0.05);
+
+		</script>
+
+	</body>
+
+
+
+</html>

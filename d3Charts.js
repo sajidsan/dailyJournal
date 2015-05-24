@@ -18,6 +18,8 @@ function d3Scope(data, tabletop) {
   var barWidth = w / (data.length) - barPadding;
   var margin = {top: 10, right: 20, bottom: 20, left: 10};
 
+  var format = d3.time.format("%A, %B %d");
+
   var xScale = d3.time.scale()
   	.domain([new Date(data[0].timestamp), new Date(data[data.length - 1].timestamp)])
   	.range([0, w]);
@@ -52,33 +54,33 @@ function d3Scope(data, tabletop) {
   	.attr("y", function(d) {
   		return h - yScale(d.howwasyourday);
   	})
-  	.attr("width", 2)
+  	.attr("width", 5)
   	.attr("height", function(d) {
   		return yScale(d.howwasyourday) - margin.bottom;
   	})
   	.attr("fill", "teal")
-  	.append("title")
-  	.text(function(d) {
-  		return d.didanythingfuninterestingormemorablehappen;
-  	})
   	.on("mouseover", function(d) {
   		var xPosition = parseFloat(d3.select(this).attr("x"));
   		var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
-
+  		console.log(xPosition);
+  		
+  		//update tooltip position, give it data
   		d3.select("#tooltip")
 						.style("left", xPosition + "px")
 						.style("top", yPosition + "px")						
 						.select("#value")
-						.text(d.timestamp);
+						.text(d.didanythingfuninterestingormemorablehappen);
 			   
+		d3.select("#tooltip")
+			.select("#heading")
+			.text((format(new Date(d.timestamp))));
 		//Show the tooltip
 		d3.select("#tooltip").classed("hidden", false);
   	})
   	.on("mouseout", function() {
 			   
 	//Hide the tooltip
-	d3.select("#tooltip").classed("hidden", true);
-					
+	d3.select("#tooltip").classed("hidden", true);		
 	})
   	;
 
@@ -93,12 +95,12 @@ function d3Scope(data, tabletop) {
   		return xScale(new Date(d.timestamp));
   	})
   	.attr("y", function(d) {
-  		return h - yScale(d.howwasyourday) + 10;
+  		return h - yScale(d.howwasyourday);
   	})
   	.attr({
   		"font-family": "sans-serif",
   		"font-size": "11px",
-  		"fill": "black"
+  		"fill": "red"
   	})
   	;
 
