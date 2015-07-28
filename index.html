@@ -1,6 +1,6 @@
 <html>
 <head>
-<title></title>
+<title>Quantified Dad</title>
 
 <link href = "css/main.css" rel="stylesheet" type="text/css">
 <link href = "css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -9,32 +9,44 @@
 <script src="scripts/handlebars.js"></script>
 <script src="scripts/tabletop.js"></script>
 <script src="scripts/d3.min.js"></script>
+<script type="text/javascript" src="scripts/date.js"></script>
 <script src="main.js"></script>
-
-
-<style type="text/css">
-
-</style>
 
 </head>
 
 <body>
-<h1> How Was Your Day?</h1>
 
-<div>
-  <div id="tooltip" class="hidden">
-      <p><h5><span id="heading">Important Label Heading</span></h5></p>
-      <p><span id="value">100</span></p>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>Hi Dad!</h1>
+    <p>Here's a playground for your journal. Its a work in progress but it'll start looking cool soon.</p>
   </div>
-  <div id="chart1">
-  </div>
+
 </div>
 
-<h1>Did anything fun, interesting, or memorable happen today?</h1>
-<div class="container">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>How your day's been</h1>
+      <div>
+        <div id="tooltip" class="hidden">
+            <p><h5><span id="heading">Important Label Heading</span></h5></p>
+            <p><span id="value">100</span></p>
+        </div>
+        <div id="chart1">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Your Daily Journal</h1>
 
-<div id="item">
-</div>
+      <div id="item">
+      </div>
+    </div>
+  </div>
 </div>
 
   <!-- HANDLEBARS TEMPLATE -->

@@ -2,7 +2,7 @@ var myData2 = [];
 
 
 function d3Scope(data, tabletop) {
-	alert("many successes");
+	alert("d3 successfully executed");
 
   console.log(data);
   //set myData equal to 'data' so that I can access it outside of thsi function
