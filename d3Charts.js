@@ -7,9 +7,7 @@ function d3Scope(data, tabletop) {
   console.log(data);
   //set myData equal to 'data' so that I can access it outside of thsi function
   myData2 = data;
-  //i can't figure out how to move this d3 function outside of the scope of this other function. whatever
-  
-
+  //i can't figure out how to move this d3 function outside of the scope of this other function. whatever 
   
 
   var w = 2000;
