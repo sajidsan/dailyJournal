@@ -2,13 +2,13 @@ var myData2 = [];
 
 
 function d3Scope(data, tabletop) {
-	alert("d3 successfully executed");
+	console.log("d3 successfully executed");
 
   console.log(data);
   //set myData equal to 'data' so that I can access it outside of thsi function
   myData2 = data;
-  //i can't figure out how to move this d3 function outside of the scope of this other function. whatever 
-  
+  //i can't figure out how to move this d3 function outside of the scope of this other function. whatever
+
 
   var w = 2000;
   var h = 200;
@@ -61,14 +61,14 @@ function d3Scope(data, tabletop) {
   		var xPosition = parseFloat(d3.select(this).attr("x"));
   		var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
   		console.log(xPosition);
-  		
+
   		//update tooltip position, give it data
   		d3.select("#tooltip")
 						.style("left", xPosition + "px")
-						.style("top", yPosition + "px")						
+						.style("top", yPosition + "px")
 						.select("#value")
 						.text(d.didanythingfuninterestingormemorablehappen);
-			   
+
 		d3.select("#tooltip")
 			.select("#heading")
 			.text((format(new Date(d.timestamp))));
@@ -76,9 +76,9 @@ function d3Scope(data, tabletop) {
 		d3.select("#tooltip").classed("hidden", false);
   	})
   	.on("mouseout", function() {
-			   
+
 	//Hide the tooltip
-	d3.select("#tooltip").classed("hidden", true);		
+	d3.select("#tooltip").classed("hidden", true);
 	})
   	;
 
@@ -107,7 +107,7 @@ function d3Scope(data, tabletop) {
   	.attr('transform', 'translate(0, ' + (h - margin.bottom) + ')')
   	.call(xAxis);
 
-  	
+
 
 
 
@@ -115,9 +115,3 @@ function d3Scope(data, tabletop) {
 
 
   } // end of function 3
-
-
-
-
-
-
