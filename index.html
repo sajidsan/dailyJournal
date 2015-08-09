@@ -16,17 +16,26 @@
 </head>
 
 <body>
-
-
 <div class="jumbotron">
   <div class="container">
-    <h2>&quot<span id="randomEntryDayGo"></span>&quot</h2>
-    <h3><span id="randomEntryRelDate"></span><h3>
-    <h4><span id="randomEntryDate"></span></h4>
+    <small class="fadeIn">a random entry</small>
+    <h2 class="fadeIn">&quot<span id="randomEntryDayGo"></span>&quot</h2>
+    <h4><span id="randomEntryRelDate"></span><h4>
+    <h5><span id="randomEntryDate"></span></h5>
   </div>
-
 </div>
-
+<div class="container-fluid">
+  <div>
+    <p>
+      your average happiness over the past 30 days was <span id="avgHappy"></span> out of 10
+    </p>
+  </div>
+  <div>
+    <p>
+      your average sleep over the past 30 days was <span id="avgSleep"></span> hours
+    </p>
+  </div>
+</div>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -54,10 +63,15 @@
   <!-- HANDLEBARS TEMPLATE -->
 
   <script id="walkTemplate" type="text/x-handlebars-template">
-        <h5> {{timestamp}} </h5>
-        <blockquote>
-        <p>{{didanythingfuninterestingormemorablehappen}}</p>
-        </blockquote>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p class="text-left"> {{timestamp}} rating: {{howwasyourday}}, workout:<em>  {{whatkindofworkoutdidyoudo}} </em></p>
+      </div>
+      <div class="panel-body">
+
+        <p>{{whatfuninterestingormemorablethingshappened}}</p>
+      </div>
+    </div>
   </script>
 
 </body>

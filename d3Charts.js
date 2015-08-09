@@ -56,31 +56,28 @@ function d3Scope(data, tabletop) {
   	.attr("height", function(d) {
   		return yScale(d.howwasyourday) - margin.bottom;
   	})
-  	.attr("fill", "teal")
+  	.attr("fill", "#EEBB22")
   	.on("mouseover", function(d) {
   		var xPosition = parseFloat(d3.select(this).attr("x"));
   		var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
   		console.log(xPosition);
 
   		//update tooltip position, give it data
-  		d3.select("#tooltip")
-						.style("left", xPosition + "px")
-						.style("top", yPosition + "px")
-						.select("#value")
-						.text(d.didanythingfuninterestingormemorablehappen);
+  	d3.select("#tooltip")
+			.style("left", xPosition + "px")
+			.style("top", yPosition + "px")
+			.select("#value")
+			.text(d.whatfuninterestingormemorablethingshappened)
 
-		d3.select("#tooltip")
-			.select("#heading")
-			.text((format(new Date(d.timestamp))));
 		//Show the tooltip
-		d3.select("#tooltip").classed("hidden", false);
-  	})
-  	.on("mouseout", function() {
-
-	//Hide the tooltip
-	d3.select("#tooltip").classed("hidden", true);
-	})
-  	;
+		d3.select("#tooltip")
+			.classed("hidden", false);
+  		})
+		//Hide the tooltip
+  		.on("mouseout", function() {
+				d3.select("#tooltip").classed("hidden", true);
+				})
+			  	;
 
   svg.selectAll("text")
   	.data(data)
@@ -93,12 +90,12 @@ function d3Scope(data, tabletop) {
   		return xScale(new Date(d.timestamp));
   	})
   	.attr("y", function(d) {
-  		return h - yScale(d.howwasyourday);
+  		return h - yScale(d.howwasyourday) - 5;
   	})
   	.attr({
   		"font-family": "sans-serif",
   		"font-size": "11px",
-  		"fill": "red"
+  		"fill": "#424242"
   	})
   	;
 

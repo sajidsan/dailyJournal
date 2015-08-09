@@ -1,3 +1,10 @@
+//fade in elements
+
+$(document).ready(function() {
+  $('.fadeIn').fadeIn(1000);
+});
+
+
 Handlebars.registerHelper('breaklines', function(text) {
     text = Handlebars.Utils.escapeExpression(text);
     text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
@@ -32,7 +39,6 @@ function tabletopScope(data, tabletop) {
   console.log(data);
 
   //go through and turn date objects into moment.js objects,
-
   (function () {
     for (i = 0; i < data.length; i++) {
       data[i].moment = moment(new Date(data[i].timestamp));
@@ -52,15 +58,8 @@ function tabletopScope(data, tabletop) {
     });
   //make a random selection from 'data' and assign it to a variable
   var randomEntry = data[Math.floor(Math.random() * data.length)];
-  //drop random selection info into the header
-  (function () {
-  var randomEntryDayGo = randomEntry.didanythingfuninterestingormemorablehappen
-  var randomEntryDate = randomEntry.moment.calendar();
-  var randomEntryRelDate = randomEntry.moment.fromNow();
-  $("#randomEntryDayGo").append(randomEntryDayGo);
-  $("#randomEntryRelDate").append(randomEntryRelDate)
-  $("#randomEntryDate").append(randomEntryDate);
-  })();
+
+
 
   //get average happiness for some number of days
   function avgHappy(numDays) {
@@ -69,10 +68,10 @@ function tabletopScope(data, tabletop) {
     var numDays = numDays;
     var startDate = moment().subtract(numDays, 'days');
     for (i = 0; i < data.length; i++) {
-      if (data[i].timestamp > startDate) {
+      if (data[i].moment > startDate) {
         count ++;
         happyTotal = happyTotal + Number(data[i].howwasyourday);
-        console.log("# " + count + ": " + data[i].timestamp + "happy total is now: " + happyTotal);
+        console.log("# " + count + ": " + data[i].moment + "happy total is now: " + happyTotal);
       }
     }
     var avg = happyTotal / count;
@@ -80,5 +79,39 @@ function tabletopScope(data, tabletop) {
   };
   console.log("the average happy = " + avgHappy(30));;
   //
+  //generic average function
+  function avgSleep(numDays) {
+    var count = 0;
+    var total = 0;
+    var numDays = numDays;
+    var startDate = moment().subtract(numDays, 'days');
+    for (i = 0; i < data.length; i++) {
+      if (data[i].moment > startDate) {
+        count ++;
+        total = total + Number(data[i].howmanyhoursdidyousleeplastnight);
+        console.log("# " + count + ": " + data[i].timestamp + "total is now: " + total);
+      }
+    }
+    var avg = total / count;
+    return avg;
+  };
+
+  console.log("your average sleep over the last few days is = " + avgSleep(45));
+  //drop random selection info into the header
+  (function () {
+    var randomEntryDayGo = randomEntry.whatfuninterestingormemorablethingshappened
+    var randomEntryDate = randomEntry.moment.calendar();
+    var randomEntryRelDate = randomEntry.moment.fromNow();
+    $("#randomEntryDayGo").append(randomEntryDayGo);
+    $("#randomEntryRelDate").append(randomEntryRelDate)
+    $("#randomEntryDate").append(randomEntryDate);
+  })();
+
+  (function () {
+    $("#avgHappy").append(avgHappy(30));
+    $("#avgSleep").append(avgSleep(30));
+  })();
+
+
 
 } // end of function tabletopScope
